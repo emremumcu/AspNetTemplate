@@ -22,10 +22,13 @@ namespace AspNetTemplate
         /// <returns></returns>
         public void ConfigureServices(IServiceCollection services)
         {
-            services
-                .AddControllersWithViews()
-                // Install-Package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation
-                .AddRazorRuntimeCompilation(); 
+            IMvcBuilder mvcBuilder = services.AddControllersWithViews();
+
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+            {
+                /// Install-Package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation   
+                mvcBuilder.AddRazorRuntimeCompilation();
+            }
             
             services.AddRazorPages();
 

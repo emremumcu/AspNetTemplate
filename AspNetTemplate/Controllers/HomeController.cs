@@ -7,5 +7,8 @@
     public class HomeController : Controller
     {
         public IActionResult Index() => View();
+
+        [Route("/readme")]
+        public IActionResult Readme() => View();
     }
 }

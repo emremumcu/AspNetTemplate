@@ -1,4 +1,8 @@
-﻿# Visual Studio Extensions
+﻿# Readme
+
+This is a starter template for ASP .Net Core MVC Applications. You can use this template as a boilerplate for your ASP .Net Core MVC Web applications.
+
+# Visual Studio Extensions
 
 * Power Commands for Visual Studio
 * Align Assignments
