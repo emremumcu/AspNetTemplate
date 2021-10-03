@@ -22,7 +22,9 @@ namespace AspNetTemplate
         /// <returns></returns>
         public void ConfigureServices(IServiceCollection services)
         {
-            IMvcBuilder mvcBuilder = services.AddControllersWithViews();
+            IMvcBuilder mvcBuilder = services.AddControllersWithViews()
+                /// Use session based TempData instead of cookie based TempData
+                .AddSessionStateTempDataProvider();
 
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
