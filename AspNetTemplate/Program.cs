@@ -4,6 +4,9 @@ namespace AspNetTemplate
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Hosting;
 
+    /// <summary>
+    /// AspNetTemplate V1 (01/10/2021)
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)

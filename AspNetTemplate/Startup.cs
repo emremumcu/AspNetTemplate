@@ -1,11 +1,16 @@
 namespace AspNetTemplate
 {
+    using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using System;
 
+    /// <summary>
+    /// AspNetTemplate V1 (01/10/2021)
+    /// </summary>
     public class Startup
     {
         /// <summary>
@@ -25,6 +30,31 @@ namespace AspNetTemplate
             services.AddRazorPages();
 
             services.AddHttpContextAccessor();
+
+            // The IDistributedCache implementation is used as a backing store for session
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(5);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
+            // A simple Authentication scenario
+            services
+                // .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddAuthentication(options =>
+                {
+                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                })
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Account/Login/";
+                    options.LogoutPath = "/Account/Logout/";
+                });
         }
 
         /// <summary>
@@ -42,6 +72,11 @@ namespace AspNetTemplate
             }
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
