@@ -18,6 +18,16 @@
 * Tools -> Options -> Text Editor, in the Display group, uncheck "Highlight current line"
 * Tools -> Options -> Environment -> Tabs and Windows, in the Preview Tab group, uncheck "Allow new files to be opened in preview tab"
 * Tools -> Options -> Text Editor -> All Languages, in the Settings group, check Word wrap
+* Name Private Fields with Underscore: 
+  * Open Tools -> Options -> Text Editor -> C# -> Code Style -> Naming
+  * Click Manage Namin Styles & click (+) sign.
+  * Naming Style: _fieldName, Required Prefix: _, Capitalization: camel Case Name
+  * Click OK to close Manage Naming Styles.
+  * Click (+) on Options Window to add a new line to the list.
+  * Select Private or Internal Field as Specification, select _fieldName as Required Style abd select Suggestion as Severity. Clik OK to close window.
+_
+
+
 
 ## Changing default SSL port number
 
