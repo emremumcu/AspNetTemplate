@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
     <title>ASP.NET Core MVC Boilerplate Template (V.1)</title>
     <link href="~/css/loader.css" rel="stylesheet" />
-    @RenderSection("headSection", required: false)
+    @*@RenderSection("headSection", required: false)*@
+    @await RenderSectionAsync("headSection", required: false)
 </head>
 
 <body style="font-family: 'Raleway', sans-serif; ">
@@ -53,6 +54,7 @@
         }
     </script>
 
-    @RenderSection("scriptSection", required: false)
+    @*@RenderSection("scriptSection", required: false)*@
+    @await RenderSectionAsync("scriptSection", required: false)
 </body>
 </html>
